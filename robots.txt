@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roman-serius.github.io/sitemap.xml
+Sitemap: https://roman-serius.github.io/daily-games/sitemap.xml
