@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Games by Roman Serius</title>
+  <meta name="description" content="Solo journaling RPGs, tabletop playsets, tools for game masters and zines by Roman Serius. Plus free daily puzzles.">
+  <link rel="canonical" href="https://romanserius.com/games/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Roman Serius">
+  <meta property="og:title" content="Games by Roman Serius">
+  <meta property="og:description" content="Solo journaling RPGs, tabletop playsets, GM tools and zines.">
+  <meta property="og:url" content="https://romanserius.com/games/">
+  <meta property="og:image" content="https://romanserius.com/images/roman-serius-monogram.png">
+  <meta name="theme-color" content="#0d1730">
+  <link rel="icon" href="/images/roman-serius-monogram.png">
+  <link rel="stylesheet" href="/assets/roman-serius.css">
+  <style>
+    .page { max-width: 1040px; margin: 0 auto; padding: 28px 18px 56px; }
+
+    .hero { display: flex; gap: 20px; align-items: center; padding-bottom: 22px; border-bottom: 1px solid var(--panel-2); }
+    .hero img { width: 88px; height: 88px; border-radius: 12px; flex: none; }
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 5vw, 2.6rem); margin: 0; color: var(--gold); line-height: 1.1; }
+    .hero p { margin: 6px 0 0; color: var(--muted); max-width: 560px; line-height: 1.5; }
+
+    .today {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px;
+      margin: 24px 0 8px; padding: 14px 18px;
+      background: var(--panel); border: 1px solid var(--panel-2); border-left: 4px solid var(--red); border-radius: var(--radius);
+    }
+    .today b { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); font-weight: 600; }
+    .today .label { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+    .today .links { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
+    .pill { text-decoration: none; color: var(--bg); background: var(--gold); font-weight: 700; font-size: 0.9rem; padding: 7px 14px; border-radius: 999px; }
+    .pill.ghost { background: none; color: var(--gold); border: 1px solid var(--gold); }
+
+    section.shelf { margin-top: 34px; }
+    .shelf h2 { font-family: var(--serif); font-weight: 600; font-size: 1.45rem; margin: 0; color: var(--ink); }
+    .shelf .sub { margin: 4px 0 14px; color: var(--muted); font-size: 0.95rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+
+    .card {
+      display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+      background: var(--panel); border: 1px solid var(--panel-2); border-radius: 14px; overflow: hidden;
+      transition: transform 0.12s ease, border-color 0.12s ease;
+    }
+    .card:hover, .card:focus-visible { transform: translateY(-3px); border-color: var(--gold); }
+    .card img { display: block; width: 100%; aspect-ratio: 315 / 250; object-fit: cover; background: var(--panel-2); }
+    .card .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .card .kind { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+    .card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin: 0; line-height: 1.2; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+    .card .go { margin-top: auto; padding-top: 6px; font-family: var(--mono); font-size: 0.8rem; color: var(--gold); }
+
+    footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--panel-2); color: var(--muted); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: space-between; }
+    footer a { color: var(--gold); }
+    @media (max-width: 520px) {
+      .hero img { width: 64px; height: 64px; }
+      .today .links { margin-left: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+  </style>
+  <script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Roman <span>·</span> Serius</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/games/" aria-current="page">Games</a>
+      <a href="/daily-games/">Daily</a>
+      <a href="https://intothevoidpress.substack.com">Writing</a>
+      <a href="/about/">About</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <img src="/images/roman-serius-monogram.png" alt="Roman Serius monogram: two mirrored gold R's under a red flourish">
+      <div>
+        <h1>Games</h1>
+        <p>Solo journaling RPGs, tabletop playsets, tools for game masters, and zines. Most are free on itch.io.</p>
+      </div>
+    </section>
+
+    <div class="today">
+      <span class="label">Play today</span>
+      <b>Daily puzzles, the same for everyone</b>
+      <div class="links">
+        <a class="pill" href="/daily-games/caesarle/">Caesarle</a>
+        <a class="pill" href="/daily-games/haikudle/">Haikudle</a>
+        <a class="pill ghost" href="/daily-games/">All daily games</a>
+      </div>
+    </div>
+
+    <section class="shelf" aria-labelledby="tabletop">
+      <h2 id="tabletop">Tabletop &amp; journaling</h2>
+      <p class="sub">Print them out, grab a pen, play alone or with friends.</p>
+      <div class="grid">
+        <a class="card" href="https://roman-serius.itch.io/this-house-has-a-history">
+          <img src="https://img.itch.zone/aW1nLzIzNjc4NDg1LmpwZw==/315x250%23cb/r4ixUc.jpg" alt="" loading="lazy">
+          <div class="body"><span class="kind">Solo journaling RPG</span><h3>This House Has A History</h3>
+            <p>Chronicle a haunted house backwards through time, with only a deck of cards and a pen.</p><span class="go">itch.io →</span></div>
+        </a>
+                <a class="card" href="https://roman-serius.itch.io/raccoon-post-man">
+          <img src="https://img.itch.zone/aW1nLzI4MzY2ODY3LnBuZw==/315x250%23cb/T8w9Tc.png" alt="" loading="lazy">
+          <div class="body"><span class="kind">Tabletop RPG</span><h3>Raccoon, Post-Man</h3>
+            <p>You are a raccoon. Humanity has fallen. It's time to evolve.</p><span class="go">itch.io →</span></div>
+        </a>
+        <a class="card" href="https://roman-serius.itch.io/all-the-things-i-almost-missed">
+          <img src="https://img.itch.zone/aW1nLzIzNjc1MDEzLmpwZw==/315x250%23cb/5Cyamf.jpg" alt="" loading="lazy">
+          <div class="body"><span class="kind">Solo journaling RPG</span><h3>All the Things I Almost Missed</h3>
+            <p>A time-loop journaling game about noticing the world around you.</p><span class="go">itch.io →</span></div>
+        </a>
+        <a class="card" href="https://roman-serius.itch.io/welcome-to-camp-axewood-a-fiasco-playset">
+          <img src="https://img.itch.zone/aW1nLzI3ODM2OTc4LmpwZWc=/315x250%23cb/pv3cgm.jpeg" alt="" loading="lazy">
+          <div class="body"><span class="kind">Fiasco playset</span><h3>Welcome to Camp Axewood</h3>
+            <p>A Fiasco Classic playset for roleplaying at summer camp.</p><span class="go">itch.io →</span></div>
+        </a>
+                <a class="card" href="https://roman-serius.itch.io/the-cave">
+          <img src="https://img.itch.zone/aW1nLzI2MjM4NzQyLmpwZWc=/315x250%23cb/BLB5gL.jpeg" alt="" loading="lazy">
+          <div class="body"><span class="kind">MOSAIC module</span><h3>The Cave</h3>
+            <p>A tabletop module inspired by Plato's Allegory of the Cave.</p><span class="go">itch.io →</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="shelf" aria-labelledby="tools">
+      <h2 id="tools">Tools for players &amp; GMs</h2>
+      <p class="sub">Things to make your own sessions run smoother, and stranger.</p>
+      <div class="grid">
+        <a class="card" href="https://roman-serius.itch.io/pixel-oracle">
+          <img src="https://img.itch.zone/aW1nLzMxNzg4OTA4LnBuZw==/315x250%23c/qwxrk%2B.png" alt="" loading="lazy">
+          <div class="body"><span class="kind">Solo RPG oracle</span><h3>Pixel Oracle</h3>
+            <p>A cozy oracle for solo TTRPGs: dice, yes/no answers and card decks.</p><span class="go">itch.io →</span></div>
+        </a>
+        <a class="card" href="https://roman-serius.itch.io/gm-terminal-kit-thornfield-demo">
+          <img src="https://img.itch.zone/aW1nLzMwNjgwMTQyLnBuZw==/315x250%23c/UcxjP2.png" alt="" loading="lazy">
+          <div class="body"><span class="kind">GM tool + game</span><h3>GM Terminal Kit + Thornfield</h3>
+            <p>A retro terminal maker for game masters, plus Thornfield, a short game made with it.</p><span class="go">itch.io →</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="shelf" aria-labelledby="zines">
+      <h2 id="zines">Zines &amp; comics</h2>
+      <p class="sub">Small printable things.</p>
+      <div class="grid">
+        <a class="card" href="https://roman-serius.itch.io/analog-zine-issue-000">
+          <img src="https://img.itch.zone/aW1nLzI5MTMwMTgyLnBuZw==/315x250%23cb/LqIpQT.png" alt="" loading="lazy">
+          <div class="body"><span class="kind">Zine</span><h3>Analog Zine, Issue 000</h3>
+            <p>A print-and-play analog distraction for in-between moments.</p><span class="go">itch.io →</span></div>
+        </a>
+        <a class="card" href="https://roman-serius.itch.io/murmurations">
+          <img src="https://img.itch.zone/aW1nLzI5MDk4OTAzLmpwZWc=/315x250%23cb/dewfpI.jpeg" alt="" loading="lazy">
+          <div class="body"><span class="kind">Comic</span><h3>Murmurations</h3>
+            <p>A short comic zine.</p><span class="go">itch.io →</span></div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>Everything lives at <a href="https://roman-serius.itch.io">roman-serius.itch.io</a></span>
+      <span><a href="/">Front page</a> · <a href="https://intothevoidpress.substack.com">Into the Void</a> · <a href="https://bsky.app/profile/romanserius.com">Bluesky</a></span>
+    </footer>
+  </main>
+</body>
+</html>

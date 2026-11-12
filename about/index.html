@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Soren Marius / Roman Serius</title>
+<link rel="canonical" href="https://romanserius.com/about/">
+<meta name="description" content="Soren Marius writes about games, film, books and why things work. Roman Serius is the name he makes games under.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="About Soren Marius / Roman Serius">
+<meta property="og:description" content="Soren Marius writes. Roman Serius makes games. Same person, two hats.">
+<meta property="og:url" content="https://romanserius.com/about/">
+<meta property="og:image" content="https://romanserius.com/images/soren-marius-portrait.jpg">
+<link rel="icon" href="/images/roman-serius-monogram.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Same newsprint palette as the front page */
+  :root{
+    --paper:#DDD1B9; --paper-2:#E6DCC8; --ink:#1A1A1A; --muted:#5E584D;
+    --rule:#B9AB8D; --red:#8B1E1E; --blue:#134F70; --gold:#D4A800;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.6}
+  a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
+  a:hover{color:var(--red)}
+  .wrap{max-width:880px;margin:0 auto;padding:28px 20px 56px}
+
+  .dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);
+    border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 0}
+  .dateline a{text-decoration:none}
+  .mast{text-align:center;padding:22px 0 16px;border-bottom:3px double var(--ink)}
+  .mast .kicker{margin:0 0 6px}
+  .mast h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(40px,8vw,76px);
+    line-height:.95;margin:0;letter-spacing:-.02em}
+  .mast .aka{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(18px,3vw,22px);margin:10px 0 0;color:var(--muted)}
+  .mast .aka b{color:var(--blue);font-style:normal;font-weight:600}
+
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 4px}
+
+  .lede{padding:26px 0 14px;border-bottom:1px solid var(--ink)}
+  .lede p{margin:0 0 14px;max-width:720px}
+  .lede p:first-of-type::first-letter{font-family:"Fraunces",serif;font-weight:800;float:left;font-size:64px;line-height:.85;padding:6px 8px 0 0}
+
+  .hats{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--ink)}
+  .hat{padding:24px 22px 18px 0}
+  .hat + .hat{padding:24px 0 18px 22px;border-left:1px solid var(--ink)}
+  .hat .head{display:flex;gap:14px;align-items:center;margin-bottom:10px}
+  .hat .head .kicker{font-size:11px;margin:0 0 2px}
+  .hat .head img{width:64px;height:64px;object-fit:cover;border:1px solid var(--ink);flex:none}
+  .hat h2{font-family:"Fraunces",serif;font-size:26px;margin:0;line-height:1.1}
+  .hat p{margin:0 0 12px;font-size:18px}
+  .hat ul{margin:0;padding:0;list-style:none}
+  .hat li{border-top:1px solid var(--rule);padding:8px 0;font-size:17px}
+  .hat li:last-child{border-bottom:1px solid var(--rule)}
+  .hat li a{text-decoration:none;font-family:"Fraunces",serif;font-weight:600}
+  .hat li a:hover{text-decoration:underline}
+
+  .contact{padding:24px 0 6px}
+  .contact h2{font-family:"Fraunces",serif;font-size:28px;margin:0 0 8px;font-weight:800}
+  .contact p{margin:0 0 16px;max-width:620px}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{font-family:"IBM Plex Mono",monospace;font-size:14px;text-decoration:none;
+    border:1px solid var(--ink);padding:9px 14px;background:var(--paper-2);color:var(--ink)}
+  .btn:hover,.btn:focus-visible{background:var(--ink);color:var(--paper)}
+  .btn.primary{background:var(--red);color:#fff;border-color:var(--red)}
+  .btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+
+  footer{text-align:center;color:var(--muted);font-size:14px;margin-top:34px;border-top:3px double var(--ink);padding-top:16px}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+  @media (max-width:700px){
+    body{font-size:18px}
+    .hats{grid-template-columns:1fr}
+    .hat,.hat + .hat{padding:22px 0 16px;border-left:0}
+    .hat + .hat{border-top:1px solid var(--ink)}
+  }
+</style>
+<script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="dateline">
+    <span><a href="/">← Front page</a></span>
+    <span><a href="/games/">Games</a> · <a href="/daily-games/">Daily</a> · <a href="https://intothevoidpress.substack.com">Writing</a> · About</span>
+  </div>
+
+  <header class="mast">
+    <p class="kicker">About</p>
+    <h1>Soren Marius</h1>
+    <p class="aka">who also makes games as <b>Roman Serius</b></p>
+  </header>
+
+  <section class="lede" aria-label="Introduction">
+    <div>
+      <p>My name is Soren Marius. I make small games, and I write about the games, movies, shows, books and ideas I can't stop thinking about.</p>
+      <p><b>Roman Serius</b> is the name I make games under because anagrams are fun and I haven't found a better one. If you see Roman Serius on itch.io or a daily puzzle here, that's me too.</p>
+      <p>I studied computer engineering, with a minor in game development, and I mostly use that to build odd little things: solo journaling RPGs, tools for game masters, and a couple of daily word puzzles.</p>
+    </div>
+  </section>
+
+  <section class="hats" aria-label="Two names">
+    <div class="hat">
+      <div class="head">
+        <img src="/images/soren-marius-portrait.jpg" alt="Hand-drawn marker portrait of Soren Marius">
+        <div><p class="kicker">Writing</p><h2>Soren Marius</h2></div>
+      </div>
+      <p>I write <i>Into the Void</i>, a free newsletter on Substack about games, stories, and whatever else tickles my fancy.</p>
+      <ul>
+        <li><a href="https://intothevoidpress.substack.com/s/pixels-and-pieces">Pixels &amp; Pieces</a>: games, recs, design</li>
+        <li><a href="https://intothevoidpress.substack.com/s/screen-and-story">Screen &amp; Story</a>: film, TV and books</li>
+        <li><a href="https://intothevoidpress.substack.com/s/whats-keeping-the-stars-apart">What's Keeping The Stars Apart</a>: poetry, philosophy, physics</li>
+      </ul>
+    </div>
+    <div class="hat">
+      <div class="head">
+        <img src="/images/roman-serius-monogram.png" alt="">
+        <div><p class="kicker">Game design</p><h2>Roman Serius</h2></div>
+      </div>
+      <p>As Roman Serius I make solo journaling RPGs, tabletop playsets, zines and tools, most of them free.</p>
+      <ul>
+        <li><a href="/games/">All games</a>: everything on itch.io</li>
+        <li><a href="/daily-games/">Daily Games</a>: Caesarle and Haikudle, new every day</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" aria-labelledby="contact">
+    <h2 id="contact">Say hello</h2>
+    <p>The best ways to reach me are a message on Bluesky or the contact form. I read everything, especially ideas for puzzles and games.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://intothevoidpress.substack.com/subscribe">Subscribe</a>
+      <a class="btn" href="/daily-games/contact/">Contact form</a>
+      <a class="btn" href="https://bsky.app/profile/romanserius.com">Bluesky</a>
+      <a class="btn" href="https://roman-serius.itch.io">itch.io</a>
+      <a class="btn" href="https://github.com/Roman-Serius">GitHub</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Soren Marius · Roman Serius</footer>
+</div>
+</body>
+</html>
