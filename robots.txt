@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://roman-serius.github.io/sitemap.xml
-Sitemap: https://roman-serius.github.io/daily-games/sitemap.xml
+Sitemap: https://romanserius.com/sitemap.xml
+Sitemap: https://romanserius.com/daily-games/sitemap.xml
