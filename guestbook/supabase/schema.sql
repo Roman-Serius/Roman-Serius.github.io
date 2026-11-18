@@ -7,7 +7,10 @@
 --
 -- Rules (all enforced here, not just in the page):
 --   * name 1-40 characters, message 1-600, optional "from" (place or
---     handle) up to 40, optional website (http/https only).
+--     handle) up to 40, optional "how did you find my page?" up to 60,
+--     optional website (http/https only).
+--   * Webmaster's reply: type it into the "reply" column in Table Editor
+--     and it shows under that entry, like an old-school guestbook.
 --   * one entry per visitor every 10 minutes, at most 3 a day.
 --   * entries show right away. To take one down, set hidden = true in
 --     Table Editor -> guestbook.entries (or delete the row).
@@ -32,6 +35,12 @@ create table if not exists guestbook.entries (
   hidden     boolean not null default false,
   created_at timestamptz not null default now()
 );
+-- Added later (safe to run again):
+alter table guestbook.entries add column if not exists found_via text
+  check (char_length(found_via) between 1 and 60);
+alter table guestbook.entries add column if not exists reply text
+  check (char_length(reply) <= 1000);
+
 create index if not exists entries_author_time on guestbook.entries (author, created_at desc);
 create index if not exists entries_visible on guestbook.entries (id desc) where not hidden;
 
@@ -43,13 +52,14 @@ alter table guestbook.entries enable row level security;
 -- Read: newest first, 30 at a time. p_before = id of the last entry you
 -- have (null for the first page).
 -- ---------------------------------------------------------------------
+drop function if exists guestbook.list_entries(bigint, int);
 create or replace function guestbook.list_entries(p_before bigint default null, p_limit int default 30)
 returns table (id bigint, name text, place text, website text, message text,
-               created_at timestamptz, mine boolean)
+               found_via text, reply text, created_at timestamptz, mine boolean)
 language sql stable security definer
 set search_path = guestbook, pg_temp
 as $$
-  select e.id, e.name, e.place, e.website, e.message, e.created_at,
+  select e.id, e.name, e.place, e.website, e.message, e.found_via, e.reply, e.created_at,
          (auth.uid() is not null and e.author = auth.uid())
   from guestbook.entries e
   where not e.hidden
@@ -67,9 +77,11 @@ as $$ select count(*) from guestbook.entries where not hidden; $$;
 -- ---------------------------------------------------------------------
 -- Write
 -- ---------------------------------------------------------------------
+drop function if exists guestbook.sign(text, text, text, text);
 create or replace function guestbook.sign(p_name text, p_message text,
                                           p_place text default null,
-                                          p_website text default null)
+                                          p_website text default null,
+                                          p_found_via text default null)
 returns bigint
 language plpgsql volatile security definer
 set search_path = guestbook, pg_temp
@@ -79,6 +91,7 @@ declare
   v_name    text := nullif(btrim(regexp_replace(coalesce(p_name, ''), '\s+', ' ', 'g')), '');
   v_place   text := nullif(btrim(regexp_replace(coalesce(p_place, ''), '\s+', ' ', 'g')), '');
   v_website text := nullif(btrim(coalesce(p_website, '')), '');
+  v_found   text := nullif(btrim(regexp_replace(coalesce(p_found_via, ''), '\s+', ' ', 'g')), '');
   -- keep line breaks, trim the ends, squash runs of blank lines
   v_message text := nullif(btrim(regexp_replace(replace(coalesce(p_message, ''), E'\r', ''), E'\n{3,}', E'\n\n', 'g')), '');
   v_id      bigint;
@@ -90,6 +103,7 @@ begin
   if v_message is null then raise exception 'Please write a message.'; end if;
   if char_length(v_name) > 40 then raise exception 'Names can be up to 40 characters.'; end if;
   if v_place is not null and char_length(v_place) > 40 then raise exception '"From" can be up to 40 characters.'; end if;
+  if v_found is not null and char_length(v_found) > 60 then raise exception '"How did you find my page?" can be up to 60 characters.'; end if;
   if char_length(v_message) > 600 then raise exception 'Messages can be up to 600 characters.'; end if;
 
   if v_website is not null then
@@ -108,8 +122,8 @@ begin
     raise exception 'Thanks! That''s the limit for today. Come back tomorrow.';
   end if;
 
-  insert into guestbook.entries (author, name, place, website, message)
-  values (v_uid, v_name, v_place, v_website, v_message)
+  insert into guestbook.entries (author, name, place, website, message, found_via)
+  values (v_uid, v_name, v_place, v_website, v_message, v_found)
   returning id into v_id;
   return v_id;
 end;
@@ -137,6 +151,6 @@ revoke all on all functions in schema guestbook from anon, authenticated, public
 
 grant execute on function guestbook.list_entries(bigint, int)        to anon, authenticated;
 grant execute on function guestbook.entry_count()                    to anon, authenticated;
-grant execute on function guestbook.sign(text, text, text, text)     to authenticated;
+grant execute on function guestbook.sign(text, text, text, text, text) to authenticated;
 grant execute on function guestbook.remove_mine(bigint)              to authenticated;
 -- (Supabase anonymous sign-ins use the "authenticated" role.)

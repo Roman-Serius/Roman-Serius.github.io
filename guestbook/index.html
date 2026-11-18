@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guestbook · Soren Marius / Roman Serius</title>
+<title>Guestbook · Soren Marius</title>
 <link rel="canonical" href="https://romanserius.com/guestbook/">
-<meta name="description" content="Sign the guestbook: leave a note for Soren Marius / Roman Serius.">
+<meta name="description" content="Sign my guestbook! Leave a note for Soren Marius / Roman Serius.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Guestbook · Soren Marius / Roman Serius">
-<meta property="og:description" content="Letters from visitors. Stop by and leave one.">
+<meta property="og:title" content="Guestbook · Soren Marius">
+<meta property="og:description" content="Letters from visitors. Stop by and leave one (or flip the page to 90s mode).">
 <meta property="og:url" content="https://romanserius.com/guestbook/">
 <meta property="og:image" content="https://romanserius.com/images/soren-logo-og.jpg">
 <meta property="og:image:width" content="1200">
@@ -19,142 +19,345 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Same newsprint palette as the front page */
-  :root{
-    --paper:#DDD1B9; --paper-2:#E6DCC8; --ink:#1A1A1A; --muted:#5E584D;
-    --rule:#B9AB8D; --red:#8B1E1E; --blue:#134F70; --gold:#D4A800;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.6}
-  a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
-  a:hover{color:var(--red)}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px 56px}
+  /* Two looks, one page.
+     Default: the tan newspaper look of the rest of the site ("Letters from Visitors").
+     90s mode (html.y90): a 1998 GeoCities guestbook — starfield, WordArt, marquee,
+     a Windows 95 form, entries in tables, a hit counter and 88x31 buttons.
+     .np-only / .y90-only show things in just one of the two. */
+  html:not(.y90) .y90-only { display: none !important; }
+  html.y90 .np-only { display: none !important; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  :root { --paper:#DDD1B9; --paper-2:#E6DCC8; --ink:#1A1A1A; --muted:#5E584D; --rule:#B9AB8D; --red:#8B1E1E; --blue:#134F70; }
 
-  .mast{text-align:center;padding:22px 0 16px;border-bottom:3px double var(--ink)}
-  .mast h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(40px,8vw,76px);
-    line-height:.95;margin:0;letter-spacing:-.02em}
-  .mast .aka{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(18px,3vw,22px);margin:10px 0 0;color:var(--muted)}
-  .kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 4px}
-  .mono{font-family:"IBM Plex Mono",monospace}
+  /* ================= newspaper (default) ================= */
+  body { margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Newsreader", Georgia, serif; font-size: 19px; line-height: 1.55; }
+  a { color: inherit; text-decoration-color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red); }
+  :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  .gb { max-width: 1040px; margin: 0 auto; padding: 0 20px 56px; }
+  .modebar { display: flex; justify-content: flex-end; padding-top: 10px; }
+  .mode-btn { font: 500 12px "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+    color: var(--ink); background: var(--paper-2); border: 1px solid var(--ink); padding: 6px 10px; border-radius: 0; }
+  .mode-btn:hover, .mode-btn:focus-visible { background: var(--ink); color: var(--paper); }
+  .mode-btn .rb { background: linear-gradient(90deg,#d00,#e80,#cb0,#0a0,#08c,#33c,#a0a); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; }
+  .mode-btn:hover .rb { color: var(--paper); background: none; }
+
+  .mast { text-align: center; padding: 10px 0 16px; border-bottom: 3px double var(--ink); }
+  .kicker { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 0 0 6px; }
+  .mast h1 { font-family: "Fraunces", Georgia, serif; font-weight: 800; font-size: clamp(40px, 8vw, 76px); line-height: .95; margin: 0; letter-spacing: -.02em; }
+  .mast .aka { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(18px, 3vw, 22px); margin: 10px 0 0; color: var(--muted); }
 
   /* the form: a clipped-out coupon */
-  .sign{margin:26px auto 8px;max-width:640px;background:var(--paper-2);border:2px dashed var(--ink);padding:20px 22px 18px}
-  .sign h2{font-family:"Fraunces",serif;font-weight:800;font-size:28px;margin:0 0 4px}
-  .sign .sub{margin:0 0 14px;color:var(--muted);font-size:16px}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  label{display:block;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
-  label .opt{color:var(--muted);text-transform:none;letter-spacing:0}
-  input,textarea{display:block;width:100%;margin-top:4px;font:inherit;font-family:"Newsreader",Georgia,serif;font-size:18px;
-    color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:0;padding:8px 10px;text-transform:none;letter-spacing:0}
-  textarea{min-height:120px;resize:vertical;line-height:1.5}
-  input:focus,textarea:focus{outline:2px solid var(--red);outline-offset:1px}
-  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
-  .count.over{color:var(--red)}
-  .btn{font-family:"IBM Plex Mono",monospace;font-size:14px;text-decoration:none;cursor:pointer;
-    border:1px solid var(--red);padding:10px 16px;background:var(--red);color:#fff}
-  .btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink)}
-  .btn[disabled]{opacity:.55;cursor:wait}
-  .btn.plain{background:var(--paper-2);color:var(--ink);border-color:var(--ink)}
-  .btn.plain:hover{background:var(--ink);color:var(--paper)}
-  #captcha:not(:empty){margin:4px 0 12px}
-  .status{min-height:1.6em;margin:10px 0 0;font-size:16px}
-  .status.error{color:var(--red)}
+  .win { margin: 26px auto 8px; max-width: 680px; background: var(--paper-2); border: 2px dashed var(--ink); }
+  .win .body { padding: 20px 22px 16px; }
+  .win h2 { font-family: "Fraunces", serif; font-weight: 800; font-size: 28px; margin: 0 0 4px; }
+  .win p { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+  .win table { width: 100%; border-collapse: collapse; }
+  .win td { padding: 4px 0; vertical-align: top; }
+  .win td.lab { width: 34%; padding: 12px 12px 0 0; font: 500 12px "IBM Plex Mono", monospace; letter-spacing: .05em; text-transform: uppercase; }
+  .req { color: var(--red); }
+  .win input, .win select, .win textarea { width: 100%; font: 18px "Newsreader", Georgia, serif; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--ink); border-radius: 0; padding: 7px 9px; }
+  .win textarea { min-height: 120px; resize: vertical; line-height: 1.45; }
+  .win input:focus, .win select:focus, .win textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+  .smilies { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; align-items: center; }
+  .count { margin-left: auto; font: 12px "IBM Plex Mono", monospace; color: var(--muted); }
+  .count.over { color: var(--red); font-weight: 600; }
+  .buttons { display: flex; gap: 10px; justify-content: flex-end; margin-top: 12px; flex-wrap: wrap; }
+  .btn95 { font: 14px "IBM Plex Mono", monospace; cursor: pointer; border-radius: 0; padding: 10px 16px;
+    background: var(--paper-2); color: var(--ink); border: 1px solid var(--ink); }
+  .btn95:hover { background: var(--ink); color: var(--paper); }
+  .btn95.primary { background: var(--red); color: #fff; border-color: var(--red); }
+  .btn95.primary:hover { background: var(--ink); border-color: var(--ink); }
+  .btn95[disabled] { opacity: .55; cursor: wait; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  #captcha:not(:empty) { margin: 8px 0 0; }
+  .status { min-height: 1.5em; margin: 10px 0 0; font-size: 16px; }
+  .status.error { color: var(--red); }
 
   /* the letters */
-  .letters-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
-    border-top:3px double var(--ink);border-bottom:1px solid var(--ink);margin-top:26px;padding:12px 0 6px}
-  .letters-head h2{font-family:"Fraunces",serif;font-weight:800;font-size:30px;margin:0}
-  .letters{columns:2;column-gap:44px;column-rule:1px solid var(--ink);padding-top:18px}
-  .letter{break-inside:avoid;margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
-  .letter p{margin:0 0 8px;white-space:pre-line;overflow-wrap:anywhere}
-  .letter .sig{text-align:right;font-family:"Fraunces",serif;font-style:italic;margin:0}
-  .letter .sig a{font-weight:600}
-  .letter .meta{display:flex;justify-content:space-between;gap:10px;margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
-  .letter .meta button{font:inherit;color:var(--red);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
-  .letter.new{animation:inked 1.6s ease-out}
-  @keyframes inked{from{background:var(--paper-2)}to{background:transparent}}
-  .empty{color:var(--muted);font-style:italic;column-span:all}
-  .more{text-align:center;margin-top:6px}
+  .letters-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    border-top: 3px double var(--ink); border-bottom: 1px solid var(--ink); margin-top: 28px; padding: 12px 0 6px; }
+  .letters-head h2 { font-family: "Fraunces", serif; font-weight: 800; font-size: 30px; margin: 0; }
+  .tally { margin: 0; font: 13px "IBM Plex Mono", monospace; color: var(--muted); }
+  .tally b { font-weight: 500; color: var(--ink); }
+  #letters { columns: 2; column-gap: 44px; column-rule: 1px solid var(--ink); padding-top: 18px; }
+  /* newspaper: the entry table is laid out as plain rows (90s mode turns it back into a table) */
+  .entry, .entry tbody, .entry tr { display: block; }
+  .entry { width: 100%; break-inside: avoid; margin: 0 0 22px; }
+  .entry tr { display: flex; gap: 10px; }
+  .entry th, .entry td { display: block; }
+  .entry td:not(.k) { flex: 1; min-width: 0; }
+  .entry th { text-align: left; font-family: "Fraunces", serif; font-size: 22px; font-weight: 700; padding: 0 0 4px; }
+  .entry th .num { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .1em; color: var(--red); margin-right: 6px; vertical-align: 3px; }
+  .entry td { padding: 2px 0; vertical-align: top; font-size: 17px; }
+  .entry td.k { flex: 0 0 8.5em; font: 11px "IBM Plex Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 5px; }
+  .entry tr.c td.k { display: none; }
+  .entry tr.c td { padding-top: 6px; font-size: 18px; }
+  .entry .msg { white-space: pre-line; overflow-wrap: anywhere; }
+  .entry .posted { display: block; font: 12px "IBM Plex Mono", monospace; color: var(--muted); padding: 4px 0 14px; border-bottom: 1px solid var(--rule); }
+  .entry .posted button { font: inherit; color: var(--red); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+  .entry tr.reply { background: var(--paper-2); padding: 8px 10px; margin-top: 2px; }
+  .entry tr.reply td { font-style: italic; }
+  .entry tr.reply td.k { display: block; font-style: normal; color: var(--red); padding-top: 10px; }
+  .entry.new { animation: inked 1.6s ease-out; }
+  @keyframes inked { from { background: var(--paper-2); } to { background: transparent; } }
+  .empty { color: var(--muted); font-style: italic; column-span: all; }
+  .more { text-align: center; margin-top: 6px; }
+  .np-foot { text-align: center; color: var(--muted); font-size: 14px; margin-top: 30px; border-top: 3px double var(--ink); padding-top: 16px; }
 
-  footer{text-align:center;color:var(--muted);font-size:14px;margin-top:30px;border-top:3px double var(--ink);padding-top:16px}
-  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
-
-  @media (max-width:700px){
-    body{font-size:18px}
-    .row{grid-template-columns:1fr;gap:0}
-    .letters{columns:1}
-    .sign{padding:16px 14px}
+  @media (max-width: 700px) {
+    body { font-size: 18px; }
+    #letters { columns: 1; }
+    .win td.lab, .win td { display: block; width: 100%; }
+    .win td.lab { padding: 8px 0 0; }
+    .win .body { padding: 16px 14px; }
   }
-  @media (prefers-reduced-motion:reduce){.letter.new{animation:none}}
+
+  /* ================= 90s mode ================= */
+  html.y90 body { background: #000018 url("stars.png") repeat; color: #fff; font-family: "Times New Roman", Times, serif; font-size: 17px; line-height: 1.4; }
+  html.y90 a { color: #00ffff; text-decoration: underline; }
+  html.y90 a:visited { color: #ff99ff; }
+  html.y90 a:hover { color: #ffff00; }
+  html.y90 :focus-visible { outline: 2px dotted #ffff00; }
+  html.y90 .paperband { background: var(--paper); border-bottom: 4px ridge #8b7d63; padding-bottom: 10px; }
+  html.y90 .paperband a, html.y90 .paperband a:visited { color: inherit; text-decoration: none; }
+  html.y90 .gb { max-width: 720px; text-align: center; padding: 0 14px 40px; }
+  html.y90 .mode-btn { font: bold 13px "MS Sans Serif", Tahoma, Geneva, sans-serif; letter-spacing: 0; text-transform: none;
+    color: #000; background: #c0c0c0; border: 2px outset #fff; box-shadow: 1px 1px 0 #000; padding: 4px 10px; }
+  html.y90 .mode-btn:active { border-style: inset; }
+
+  .wordart { font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive; font-weight: bold;
+    font-size: clamp(32px, 7vw, 52px); line-height: 1.1; margin: 4px 0 6px;
+    background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #00ffff, #3366ff, #ff00ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(3px 3px 0 #000080); }
+  .wordart.small { font-size: clamp(24px, 5vw, 34px); }
+  .marquee { overflow: hidden; white-space: nowrap; background: #000080; border: 3px inset #c0c0c0; color: #ffff00;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive; font-weight: bold; padding: 4px 0; margin: 10px 0 16px; }
+  .marquee span { display: inline-block; padding-left: 100%; animation: scroll 18s linear infinite; }
+  @keyframes scroll { to { transform: translateX(-100%); } }
+  .blink { animation: blink 1s steps(1) infinite; color: #ff3333; font-weight: bold; }
+  @keyframes blink { 50% { visibility: hidden; } }
+  .intro { font-size: 18px; margin: 0 0 10px; }
+  .intro b { color: #ffff66; }
+  .navlinks { font: bold 15px Arial, Helvetica, sans-serif; margin: 10px 0 0; }
+  hr.rainbow { height: 5px; border: 0; margin: 22px 0; background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #00ffff, #3366ff, #ff00ff); }
+
+  html.y90 .win { max-width: none; margin: 0; background: #c0c0c0; color: #000; text-align: left; border: 2px outset #fff;
+    box-shadow: 1px 1px 0 #000; font-family: "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; }
+  .titlebar { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    background: linear-gradient(90deg, #000080, #1084d0); color: #fff; font-weight: bold; padding: 3px 4px 3px 6px; font-size: 13px; }
+  .titlebar .ctl { display: flex; gap: 2px; }
+  .titlebar .ctl span { display: inline-block; width: 18px; height: 16px; background: #c0c0c0; color: #000; border: 2px outset #fff; font-size: 11px; line-height: 11px; text-align: center; }
+  html.y90 .win .body { padding: 14px; }
+  html.y90 .win p { color: #000; font-size: 14px; margin: 0 0 12px; }
+  html.y90 .win td.lab { font: bold 14px "MS Sans Serif", Tahoma, Geneva, sans-serif; text-transform: none; letter-spacing: 0; padding: 8px 4px 0; width: 36%; }
+  html.y90 .win td { padding: 5px 4px; }
+  html.y90 .req { color: #cc0000; }
+  html.y90 .win input, html.y90 .win select, html.y90 .win textarea { font: 15px "Times New Roman", Times, serif; color: #000; background: #fff;
+    border: 2px inset #fff; box-shadow: inset 1px 1px 0 #808080; padding: 4px 5px; }
+  html.y90 .win select { font: 14px "MS Sans Serif", Tahoma, Geneva, sans-serif; }
+  html.y90 .count { font: 12px "MS Sans Serif", Tahoma, sans-serif; color: #404040; }
+  html.y90 .btn95 { font: bold 14px "MS Sans Serif", Tahoma, Geneva, sans-serif; color: #000; background: #c0c0c0;
+    border: 2px outset #fff; box-shadow: 1px 1px 0 #000; padding: 5px 14px; }
+  html.y90 .btn95:hover { background: #c0c0c0; color: #000; }
+  html.y90 .btn95:active { border-style: inset; box-shadow: none; }
+  html.y90 .btn95.mini { padding: 2px 7px; font: 14px "Courier New", monospace; }
+  html.y90 .buttons { justify-content: center; }
+  html.y90 .status { text-align: center; font-weight: bold; color: #000080; font-size: 14px; }
+  html.y90 .status.error { color: #cc0000; }
+
+  html.y90 .tally { font: 18px "Times New Roman", Times, serif; color: #fff; margin: 4px 0 16px; }
+  html.y90 .tally b { color: #ffff66; font-weight: bold; }
+  html.y90 #letters { columns: 1; column-rule: none; padding-top: 0; }
+  html.y90 .entry { display: table; }
+  html.y90 .entry tbody { display: table-row-group; }
+  html.y90 .entry tr { display: table-row; }
+  html.y90 .entry th, html.y90 .entry td { display: table-cell; }
+  html.y90 .entry { border-collapse: separate; border: 4px ridge #c0c0c0; background: #ffffcc; color: #000; margin: 0 0 18px; text-align: left; }
+  html.y90 .entry.new { animation: flash 2s ease-out; }
+  @keyframes flash { from { background: #ffff00; } to { background: #ffffcc; } }
+  html.y90 .entry th { background: #000080; color: #fff; padding: 5px 8px; font: bold 16px "Times New Roman", Times, serif; }
+  html.y90 .entry th .num { color: #ffff00; font: inherit; letter-spacing: 0; vertical-align: 0; }
+  html.y90 .entry td { padding: 4px 8px; border-top: 1px dotted #c0b070; font-size: 16px; }
+  html.y90 .entry td.k { width: 30%; font: bold 16px "Times New Roman", Times, serif; text-transform: none; letter-spacing: 0; color: #000; padding-top: 4px; }
+  html.y90 .entry tr.c td.k { display: table-cell; }
+  html.y90 .entry tr.c td { font-size: 16px; padding-top: 4px; }
+  html.y90 .entry .posted { font: italic 13px "Times New Roman", Times, serif; color: #555; padding: 0; border: 0; }
+  html.y90 .entry .posted button { color: #cc0000; }
+  html.y90 .entry a { color: #0000ee; }
+  html.y90 .entry a:visited { color: #551a8b; }
+  html.y90 .entry tr.reply { background: none; padding: 0; margin: 0; }
+  html.y90 .entry tr.reply td.k { display: table-cell; }
+  html.y90 .entry tr.reply td { background: #ccffcc; border-top: 2px solid #339933; font-style: normal; color: #000; }
+  html.y90 .entry tr.reply td.k { color: #000; }
+  html.y90 .empty { color: #ffff99; }
+
+  .counter { margin: 6px 0 0; font-size: 17px; }
+  .digits { display: inline-flex; gap: 2px; padding: 3px; background: #333; border: 2px inset #808080; vertical-align: middle; margin: 0 4px; }
+  .digits span { display: inline-block; width: 17px; padding: 1px 0; background: #000; color: #33ff33; font: bold 18px "Courier New", Courier, monospace; text-align: center; text-shadow: 0 0 4px #33ff33; }
+  .linkme { display: inline-block; text-align: center; background: #000040; border: 3px double #c0c0c0; padding: 12px; margin-top: 4px; max-width: 100%; }
+  .linkme textarea { display: block; width: 100%; min-width: 260px; margin: 8px 0 0; font: 12px "Courier New", monospace; background: #fff; color: #000; border: 2px inset #fff; height: 64px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 18px; }
+  .badges img { display: block; width: 88px; height: 31px; image-rendering: pixelated; }
+  .construction { margin: 22px auto 0; max-width: 460px; padding: 6px; background: repeating-linear-gradient(45deg, #ffcc00 0 12px, #000 12px 24px); }
+  .construction p { margin: 0; background: #ffcc00; color: #000; font: bold 15px Arial, Helvetica, sans-serif; padding: 6px; }
+  .webfooter { margin-top: 22px; font: 13px Arial, Helvetica, sans-serif; color: #c0c0c0; }
+  .webfooter p { margin: 4px 0; }
+
+  @media (max-width: 560px) {
+    html.y90 .win td.lab, html.y90 .win td { display: block; width: 100%; }
+    html.y90 .entry td.k { width: 34%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee span { animation: none; padding-left: 0; }
+    .marquee { text-align: center; white-space: normal; }
+    .blink, .entry.new, html.y90 .entry.new { animation: none; }
+  }
 </style>
+<script>
+  // pick the look before anything draws, so there's no flash
+  try { if (localStorage.getItem("rs:guestbook:mode") === "90s" || location.hash === "#90s") document.documentElement.classList.add("y90"); } catch (e) {}
+</script>
 <script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<header class="dateline-bar">
-  <div class="dateline">
-    <a class="dl-home" href="/">← Front page</a>
-    <nav class="site-nav" aria-label="Site">
-      <a href="/games/">Games</a>
-      <a href="/daily-games/">Daily</a>
-      <a href="https://intothevoidpress.substack.com">Writing</a>
-      <a href="/art-and-comics/">Art &amp; Comics</a>
-      <a href="/about/">About</a>
-      <a href="/now/">Now</a>
-      <a href="/guestbook/" aria-current="page">Guestbook</a>
-    </nav>
+<div class="paperband">
+  <header class="dateline-bar">
+    <div class="dateline">
+      <a class="dl-home" href="/">← Front page</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/games/">Games</a>
+        <a href="/daily-games/">Daily</a>
+        <a href="https://intothevoidpress.substack.com">Writing</a>
+        <a href="/art-and-comics/">Art &amp; Comics</a>
+        <a href="/about/">About</a>
+        <a href="/now/">Now</a>
+        <a href="/guestbook/" aria-current="page">Guestbook</a>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<main class="gb">
+  <div class="modebar">
+    <button class="mode-btn" id="modeBtn" type="button" aria-pressed="false">
+      <span class="np-only">Switch to <span class="rb">90s mode</span></span>
+      <span class="y90-only">Back to 2026</span>
+    </button>
   </div>
-</header>
-<div class="wrap">
 
-
-  <header class="mast">
+  <!-- newspaper masthead -->
+  <header class="mast np-only">
     <p class="kicker">Guestbook</p>
     <h1>Letters from Visitors</h1>
     <p class="aka">You came all this way. Leave a note.</p>
   </header>
 
-  <form class="sign" id="form" novalidate>
-    <h2>Sign the guestbook</h2>
-    <p class="sub">Say hi, tell me what brought you here, or leave an idea for a game. Your note shows up below right away.</p>
-    <div class="row">
-      <label>Name
-        <input id="name" name="name" maxlength="40" autocomplete="nickname" required>
-      </label>
-      <label>From <span class="opt">(optional)</span>
-        <input id="place" name="place" maxlength="40" placeholder="a place, a handle, a mood">
-      </label>
+  <!-- 90s mode intro -->
+  <div class="y90-only">
+    <h1 class="wordart"><span aria-hidden="true">~*~ </span>My Guestbook<span aria-hidden="true"> ~*~</span></h1>
+    <div class="marquee" aria-hidden="true"><span>★ Welcome to my guestbook!!! ★ Please sign before you leave :) ★ No spam please!! ★ Thanx 4 visiting!!! ★</span></div>
+    <p class="intro">Thanx for stopping by my little corner of the <b>World Wide Web</b>!<br>
+      Please sign my guestbook and let me know you were here. <span class="blink">NEW!</span></p>
+    <p class="navlinks">[ <a href="#sign">Sign my guestbook</a> | <a href="#entries">View my guestbook</a> | <a href="/">Back to my homepage</a> ]</p>
+    <hr class="rainbow">
+  </div>
+
+  <form class="win" id="sign" novalidate aria-labelledby="sign-title">
+    <div class="titlebar y90-only">
+      <span>Sign My Guestbook! - Microsoft Internet Explorer</span>
+      <span class="ctl" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
     </div>
-    <label>Website <span class="opt">(optional)</span>
-      <input id="website" name="website" maxlength="200" inputmode="url" autocomplete="url" placeholder="yoursite.com">
-    </label>
-    <label>Message
-      <textarea id="message" name="message" maxlength="600" required></textarea>
-    </label>
-    <!-- Bots fill in every field; people never see this one. -->
-    <label class="hp" aria-hidden="true">Leave this empty <input id="hp" tabindex="-1" autocomplete="off"></label>
-    <div id="captcha"></div>
-    <div class="actions">
-      <span class="count" id="count">600 left</span>
-      <button class="btn" id="submit" type="submit">Sign the guestbook</button>
+    <div class="body">
+      <h2 id="sign-title" class="np-only">Sign the guestbook</h2>
+      <p class="np-only">Say hi, tell me what brought you here, or leave an idea for a game. Your note shows up right away.</p>
+      <p class="y90-only">Fill out the form below to sign my guestbook. Fields marked with <span class="req">*</span> are required. Your entry shows up right away!</p>
+      <table role="presentation">
+        <tr><td class="lab"><label for="name">Your name <span class="req">*</span></label></td>
+            <td><input id="name" maxlength="40" autocomplete="nickname" required></td></tr>
+        <tr><td class="lab"><label for="website">Your homepage</label></td>
+            <td><input id="website" maxlength="200" inputmode="url" autocomplete="url" placeholder="yoursite.com"></td></tr>
+        <tr><td class="lab"><label for="place">Where are you from?</label></td>
+            <td><input id="place" maxlength="40" placeholder="City, planet, or state of mind"></td></tr>
+        <tr><td class="lab"><label for="found">How did you find my page?</label></td>
+            <td><select id="found">
+                  <option value="">-- Please choose --</option>
+                  <option>Just surfing the Web</option>
+                  <option>A search engine</option>
+                  <option>A friend told me</option>
+                  <option>Bluesky</option>
+                  <option>Into the Void (the newsletter)</option>
+                  <option>itch.io</option>
+                  <option>The Daily Games</option>
+                  <option>A webring</option>
+                  <option>I'm not sure, I just woke up here</option>
+                </select></td></tr>
+        <tr><td class="lab"><label for="message">Your note <span class="req">*</span></label></td>
+            <td><textarea id="message" maxlength="600" required></textarea>
+                <div class="smilies">
+                  <span class="y90-only" style="display:contents">
+                    <button type="button" class="btn95 mini" data-smiley=":)">:)</button>
+                    <button type="button" class="btn95 mini" data-smiley=";)">;)</button>
+                    <button type="button" class="btn95 mini" data-smiley=":D">:D</button>
+                    <button type="button" class="btn95 mini" data-smiley=":P">:P</button>
+                    <button type="button" class="btn95 mini" data-smiley="&lt;3">&lt;3</button>
+                    <button type="button" class="btn95 mini" data-smiley="^_^">^_^</button>
+                  </span>
+                  <span class="count" id="count">600 characters left</span>
+                </div></td></tr>
+      </table>
+      <!-- Bots fill in every field; people never see this one. -->
+      <label class="hp" aria-hidden="true">Leave this empty <input id="hp" tabindex="-1" autocomplete="off"></label>
+      <div id="captcha"></div>
+      <div class="buttons">
+        <button class="btn95" id="clear" type="reset">Clear Form</button>
+        <button class="btn95 primary" id="submit" type="submit"><span class="np-only">Sign the guestbook</span><span class="y90-only">Sign Guestbook!</span></button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
     </div>
-    <p class="status" id="status" role="status" aria-live="polite"></p>
   </form>
 
-  <div class="letters-head">
-    <h2>The letters</h2>
-    <span class="mono" id="total" style="font-size:13px;color:var(--muted)"></span>
-  </div>
-  <section class="letters" id="letters" aria-live="polite">
-    <p class="empty">Loading the letters…</p>
-  </section>
-  <div class="more"><button class="btn plain" id="more" type="button" hidden>Older letters</button></div>
+  <hr class="rainbow y90-only">
 
-  <footer>© 2026 Soren Marius · Roman Serius</footer>
-</div>
+  <div class="letters-head np-only">
+    <h2>The letters</h2>
+    <p class="tally" data-tally></p>
+  </div>
+  <div class="y90-only">
+    <h2 class="wordart small" id="entries">Guestbook Entries</h2>
+    <p class="tally" data-tally>Loading the guestbook…</p>
+  </div>
+  <section id="letters" aria-live="polite"></section>
+  <p class="more"><button class="btn95" id="more" type="button" hidden><span class="np-only">Older letters</span><span class="y90-only">&lt;&lt; Older Entries</span></button></p>
+
+  <footer class="np-foot np-only">© 2026 Soren Marius · Roman Serius</footer>
+
+  <div class="y90-only">
+    <hr class="rainbow">
+    <p class="counter" id="counter" hidden>You are visitor number <span class="digits" id="digits" aria-hidden="true"></span><span id="countText" class="hp"></span> to this page!</p>
+    <div class="linkme">
+      <b>Link to my page!</b><br>
+      <img src="/images/88x31/romanserius.png" width="88" height="31" alt="romanserius.com" style="image-rendering:pixelated;margin-top:8px">
+      <textarea readonly aria-label="HTML for a link button" id="linkcode">&lt;a href="https://romanserius.com/"&gt;&lt;img src="https://romanserius.com/images/88x31/romanserius.png" width="88" height="31" alt="romanserius.com"&gt;&lt;/a&gt;</textarea>
+    </div>
+    <div class="badges">
+      <a href="/"><img src="/images/88x31/soren-marius.png" alt="Soren Marius"></a>
+      <a href="https://intothevoidpress.substack.com"><img src="/images/88x31/into-the-void.png" alt="Into the Void newsletter"></a>
+      <a href="/daily-games/"><img src="/images/88x31/daily-games.png" alt="Daily Games"></a>
+      <a href="/games/"><img src="/images/88x31/romanserius.png" alt="Roman Serius"></a>
+      <img src="/images/88x31/best-viewed-with-eyes.png" alt="Best viewed with eyes">
+    </div>
+    <div class="construction"><p>This page is ALWAYS under construction!!</p></div>
+    <footer class="webfooter">
+      <p>Best viewed in Netscape Navigator 4.0 at 800x600 resolution.</p>
+      <p>This page was last updated on November 17, 2026.</p>
+      <p>© 2026 Soren Marius · <a href="/">Back to my homepage</a></p>
+    </footer>
+  </div>
+</main>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
