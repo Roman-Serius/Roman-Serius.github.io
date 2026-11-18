@@ -53,6 +53,9 @@
   .desk li b{font-family:"Fraunces",serif;font-weight:600}
   .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
     border:1px solid var(--ink);padding:1px 5px;margin-left:4px;vertical-align:2px}
+  .desk li.book{display:flex;gap:14px;align-items:center}
+  .cover{width:80px;height:auto;flex:none;border:1px solid var(--ink);box-shadow:3px 3px 0 var(--rule)}
+  .note{color:var(--muted);font-size:15px;font-style:italic}
   .kind{display:inline-block;min-width:6.5em;font-family:"IBM Plex Mono",monospace;font-size:11px;
     letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
@@ -76,9 +79,9 @@
     <a class="dl-home" href="/">← Front page</a>
     <nav class="site-nav" aria-label="Site">
       <a href="/games/">Games</a>
-      <a href="/art-and-comics/">Art &amp; Comics</a>
       <a href="/daily-games/">Daily</a>
       <a href="https://intothevoidpress.substack.com">Writing</a>
+      <a href="/art-and-comics/">Art &amp; Comics</a>
       <a href="/about/">About</a>
       <a href="/now/" aria-current="page">Now</a>
       <a href="/guestbook/">Guestbook</a>
@@ -116,11 +119,11 @@
       <p class="kicker">Off the clock</p>
       <h2 id="taking-in">Reading &amp; listening</h2>
       <ul>
-        <li><span class="kind">Reading</span> <b><i>The Strength of the Few</i></b> by James Islington</li>
-        <li><span class="kind">Listening</span> <b><i>Dungeons and Daddies</i></b></li>
-        <li><span class="kind">Listening</span> <b><i>Worlds Beyond Number</i></b></li>
-        <li><span class="kind">Listening</span> <b><i>The Rest Is Science</i></b></li>
-        <!-- Add <li><span class="kind">Watching</span> …</li> when there's a show. -->
+        <li class="book"><img class="cover" src="strength-of-the-few.webp" width="80" height="120" alt="Cover of The Strength of the Few by James Islington"><span><span class="kind">Reading</span><br><b><i>The Strength of the Few</i></b> by James Islington<br><span class="note">Hierarchy, book two</span></span></li>
+        <li><span class="kind">Listening</span> <b><a href="https://www.dungeonsanddaddies.com"><i>Dungeons and Daddies</i></a></b></li>
+        <li><span class="kind">Listening</span> <b><a href="https://www.worldsbeyondnumber.com"><i>Worlds Beyond Number</i></a></b></li>
+        <li><span class="kind">Listening</span> <b><a href="https://therestis.com/science"><i>The Rest Is Science</i></a></b></li>
+        <li><span class="kind">Watching</span> No shows right now. Films go in my <b><a href="https://boxd.it/30mPj">Letterboxd diary</a></b>.</li>
       </ul>
     </section>
 

@@ -20,8 +20,9 @@
   --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: dark;
 }
-/* "The tan pages": the same section layout on the front page's newsprint.
-   Used by /zines/ (<body class="tan">). */
+/* "The tan pages" (Soren Marius): the same section layout on the front
+   page's newsprint. Used by /art-and-comics/ (<body class="tan">).
+   Blue pages = Roman Serius, tan pages = Soren Marius. */
 body.tan {
   --bg: #DDD1B9;
   --panel: #E6DCC8;
