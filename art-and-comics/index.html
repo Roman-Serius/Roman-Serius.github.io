@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art &amp; Comics by Roman Serius</title>
+  <meta name="description" content="Comics and art by Roman Serius, including Murmurations, readable right here.">
+  <link rel="canonical" href="https://romanserius.com/art-and-comics/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Roman Serius">
+  <meta property="og:title" content="Art &amp; Comics by Roman Serius">
+  <meta property="og:description" content="Comics and art, including Murmurations, readable right here.">
+  <meta property="og:url" content="https://romanserius.com/art-and-comics/">
+  <meta property="og:image" content="https://romanserius.com/images/roman-serius-monogram.png">
+  <meta name="theme-color" content="#DDD1B9">
+  <link rel="icon" href="/images/roman-serius-monogram.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/dateline.css">
+  <link rel="stylesheet" href="/assets/roman-serius.css">
+  <style>
+    .comic { padding-top: 26px; }
+    .comic-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .comic-head h2 { font-family: var(--serif); font-weight: 800; font-size: 34px; margin: 0; line-height: 1.05; }
+    .comic-head .sub { margin: 4px 0 0; color: var(--muted); font-style: italic; }
+    .comic-head .go { font-family: var(--mono); font-size: 13px; }
+    .reader { border: 1px solid var(--ink); background: var(--panel); padding: 18px; }
+    .stage { display: flex; justify-content: center; align-items: center; min-height: 240px; }
+    .page-img { display: block; max-width: 100%; max-height: 80vh; height: auto; border: 1px solid var(--rule); background: #fff; cursor: pointer; }
+    .controls { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 14px; }
+    .ctl { font-family: var(--mono); font-size: 16px; width: 44px; height: 36px; cursor: pointer; background: var(--bg); color: var(--ink); border: 1px solid var(--ink); }
+    .ctl:hover:not([disabled]), .ctl:focus-visible { background: var(--ink); color: var(--bg); }
+    .ctl[disabled] { opacity: .35; cursor: default; }
+    .count { font-family: var(--mono); font-size: 13px; color: var(--muted); min-width: 7em; text-align: center; }
+    .art { padding-top: 34px; margin-top: 34px; border-top: 1px solid var(--ink); }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; align-items: start; }
+    .piece { margin: 0; }
+    .piece a { display: block; background: var(--panel); border: 1px solid var(--ink); padding: 12px; transition: transform .15s ease, box-shadow .15s ease; }
+    .piece a:hover, .piece a:focus-visible { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+    .piece img { display: block; width: 100%; height: auto; }
+    .piece figcaption { font-family: var(--serif); font-style: italic; font-size: 19px; text-align: center; margin-top: 10px; }
+    .lightbox { position: fixed; inset: 0; background: rgba(26,26,26,.88); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; z-index: 50; cursor: zoom-out; }
+    .lightbox img { max-width: 100%; max-height: calc(100vh - 100px); border: 10px solid #f3ead3; }
+    .lightbox p { color: #f3ead3; font-family: var(--serif); font-style: italic; font-size: 19px; margin: 0; text-align: center; }
+    @media (prefers-reduced-motion: reduce) { .piece a { transition: none; } }
+    .placeholder { text-align: center; color: var(--muted); font-style: italic; margin: 14px 0 0; }
+  </style>
+  <script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="tan">
+  <header class="dateline-bar">
+    <div class="dateline">
+      <a class="dl-home" href="/">← Front page</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="/games/">Games</a>
+        <a href="/art-and-comics/" aria-current="page">Art &amp; Comics</a>
+        <a href="/daily-games/">Daily</a>
+        <a href="https://intothevoidpress.substack.com">Writing</a>
+        <a href="/about/">About</a>
+        <a href="/now/">Now</a>
+        <a href="/guestbook/">Guestbook</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <header class="masthead">
+      <p class="kicker">Roman Serius <b>·</b> The tan pages</p>
+      <h1>Art &amp; Comics</h1>
+      <p class="aka">Comics and paintings, to look at right here.</p>
+    </header>
+
+    <section class="comic" id="murmurations" aria-labelledby="murmurations-title">
+      <div class="comic-head">
+        <div>
+          <p class="kicker">Comic <b>·</b> by Soren Marius</p>
+          <h2 id="murmurations-title">Murmurations</h2>
+          <p class="sub">A short comic.</p>
+        </div>
+        <a class="go" href="https://roman-serius.itch.io/murmurations">Also on itch.io →</a>
+      </div>
+
+      <!-- The reader. Page images live in murmurations/ and are listed in
+           murmurations/pages.js. With no pages listed it shows the cover. -->
+      <div class="reader" data-comic="murmurations">
+        <div class="stage">
+          <img class="page-img" alt="" src="https://img.itch.zone/aW1nLzI5MDk4OTAzLmpwZWc=/315x250%23cb/dewfpI.jpeg">
+        </div>
+        <div class="controls" hidden>
+          <button class="ctl prev" type="button" aria-label="Previous page">←</button>
+          <span class="count" aria-live="polite"></span>
+          <button class="ctl next" type="button" aria-label="Next page">→</button>
+        </div>
+        <p class="placeholder">Pages coming soon. Until then, read it on <a href="https://roman-serius.itch.io/murmurations">itch.io</a>.</p>
+      </div>
+    </section>
+
+    <section class="art" id="art" aria-labelledby="art-title">
+      <div class="comic-head">
+        <div>
+          <p class="kicker">Paintings</p>
+          <h2 id="art-title">Art</h2>
+          <p class="sub">Click a painting to see it bigger.</p>
+        </div>
+      </div>
+      <!-- One <figure> per piece. Put the image in art/ and add a block here. -->
+      <div class="gallery">
+        <figure class="piece">
+          <a href="art/sharing-a-smoke.webp" class="zoom">
+            <img src="art/sharing-a-smoke.webp" width="630" height="840" loading="lazy"
+                 alt="A blue diner with a red DINE-IN sign by a long black road through an orange desert at night. Smoke from the diner curls up into a huge pale moon.">
+          </a>
+          <figcaption>Sharing a Smoke</figcaption>
+        </figure>
+        <figure class="piece">
+          <a href="art/fried-egg-spirits.webp" class="zoom">
+            <img src="art/fried-egg-spirits.webp" width="1040" height="783" loading="lazy"
+                 alt="In a grey cave, a tall pale figure with yellow-edged horns and a cloak floats beside a squat dark creature with glowing eyes, surrounded by little glowing fried-egg spirits.">
+          </a>
+          <figcaption>The Fried Egg Spirits of Tomagurei Cave and Greg</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>
+      <span>Everything lives at <a href="https://roman-serius.itch.io">roman-serius.itch.io</a></span>
+      <span><a href="/">Front page</a> · <a href="https://intothevoidpress.substack.com">Into the Void</a> · <a href="https://bsky.app/profile/romanserius.com">Bluesky</a></span>
+    </footer>
+  </main>
+  <script src="murmurations/pages.js"></script>
+  <script src="reader.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

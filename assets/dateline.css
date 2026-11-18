@@ -1,0 +1,98 @@
+/* The site header: one newspaper dateline on every page of romanserius.com.
+   Used by the paper pages (front page, about, now, guestbook), the blue pages
+   (games, zines) AND every daily-games page, which load it from
+   https://romanserius.com/assets/dateline.css. Change the header here only.
+
+   Markup:
+   <header class="dateline-bar">            add "blue" on navy pages,
+     <div class="dateline">                 "has-tools" on game pages
+       <a class="dl-home" href="/">← Front page</a>
+       <nav class="site-nav" aria-label="Site"> …links… </nav>
+       <div class="tools"> …game buttons… </div>   (game pages only)
+     </div>
+   </header>
+   Fonts: pages load IBM Plex Mono (with Fraunces + Newsreader) from Google Fonts. */
+
+.dateline-bar {
+  --dl-ink: #1A1A1A;
+  --dl-muted: #5E584D;
+  --dl-accent: #8B1E1E;
+  max-width: 1040px;              /* same frame as the front page: 1000 of content + 20px each side */
+  margin: 0 auto;
+  padding: 18px 20px 0;
+  box-sizing: border-box;
+}
+.dateline-bar.blue {
+  --dl-ink: #f3ead3;
+  --dl-muted: #a9b2cc;
+  --dl-accent: #e3b448;
+}
+.dateline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+  font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dl-muted);
+  border-top: 3px solid var(--dl-ink);
+  border-bottom: 1px solid var(--dl-ink);
+  padding: 6px 0;
+}
+.dateline a { color: inherit; text-decoration: none; }
+.dateline a:hover, .dateline a:focus-visible { color: var(--dl-ink); }
+.dateline .dl-home { white-space: nowrap; }
+
+.dateline .site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
+  row-gap: 2px;
+}
+.dateline .site-nav a { white-space: nowrap; }
+.dateline .site-nav a + a::before {
+  content: "·";
+  display: inline-block;
+  margin: 0 .55em;
+  color: var(--dl-muted);
+}
+.dateline .site-nav a[aria-current="page"] {
+  color: var(--dl-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--dl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+/* Game buttons sit on the left, next to "Front page", so the links on the
+   right are in exactly the same place on every page. */
+.dateline .dl-home { order: 0; }
+.dateline .tools { order: 1; display: flex; gap: 6px; margin-right: auto; }
+.dateline .site-nav { order: 2; }
+.dateline .tools .icon-btn {
+  height: 26px; min-width: 30px; padding: 0 6px;
+  font-size: 14px; line-height: 1; letter-spacing: 0; text-transform: none;
+  margin: -4px 0;           /* keep the bar as thin as on other pages */
+}
+
+@media (max-width: 760px) {
+  .dateline-bar { padding: 14px 16px 0; }
+}
+/* Phones: links get their own full-width line, no dots, so nothing wraps. */
+@media (max-width: 600px) {
+  .dateline .site-nav {
+    width: 100%; margin-left: 0; justify-content: space-between;
+    font-size: 11px; letter-spacing: .03em;
+  }
+  .dateline .site-nav a + a::before { display: none; }
+}
+/* Game pages: on phones the buttons matter more than the links. */
+@media (max-width: 560px) {
+  .dateline-bar.has-tools .site-nav { display: none; }
+  .dateline-bar.has-tools .dateline { padding: 4px 0; }
+  .dateline-bar.has-tools .tools { margin-left: auto; margin-right: 0; }
+}

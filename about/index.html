@@ -10,8 +10,11 @@
 <meta property="og:title" content="About Soren Marius / Roman Serius">
 <meta property="og:description" content="Soren Marius writes. Roman Serius makes games. Same person, two hats.">
 <meta property="og:url" content="https://romanserius.com/about/">
-<meta property="og:image" content="https://romanserius.com/images/soren-marius-portrait.jpg">
+<meta property="og:image" content="https://romanserius.com/images/soren-logo-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" href="/images/roman-serius-monogram.png">
+<link rel="stylesheet" href="/assets/dateline.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,13 +30,8 @@
     font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.6}
   a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
   a:hover{color:var(--red)}
-  .wrap{max-width:880px;margin:0 auto;padding:28px 20px 56px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 56px}
 
-  .dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--muted);
-    border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 0}
-  .dateline a{text-decoration:none}
   .mast{text-align:center;padding:22px 0 16px;border-bottom:3px double var(--ink)}
   .mast .kicker{margin:0 0 6px}
   .mast h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(40px,8vw,76px);
@@ -84,12 +82,22 @@
 <script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+<header class="dateline-bar">
+  <div class="dateline">
+    <a class="dl-home" href="/">← Front page</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/games/">Games</a>
+      <a href="/art-and-comics/">Art &amp; Comics</a>
+      <a href="/daily-games/">Daily</a>
+      <a href="https://intothevoidpress.substack.com">Writing</a>
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/now/">Now</a>
+      <a href="/guestbook/">Guestbook</a>
+    </nav>
+  </div>
+</header>
 <div class="wrap">
 
-  <div class="dateline">
-    <span><a href="/">← Front page</a></span>
-    <span><a href="/games/">Games</a> · <a href="/daily-games/">Daily</a> · <a href="https://intothevoidpress.substack.com">Writing</a> · About</span>
-  </div>
 
   <header class="mast">
     <p class="kicker">About</p>
@@ -108,7 +116,7 @@
   <section class="hats" aria-label="Two names">
     <div class="hat">
       <div class="head">
-        <img src="/images/soren-marius-portrait.jpg" alt="Hand-drawn marker portrait of Soren Marius">
+        <img src="/images/soren-logo.webp" alt="Soren Marius logo: a drawn portrait in browns over a repeating line of text, "we're here because we're here"">
         <div><p class="kicker">Writing</p><h2>Soren Marius</h2></div>
       </div>
       <p>I write <i>Into the Void</i>, a free newsletter on Substack about games, stories, and whatever else tickles my fancy.</p>
@@ -116,6 +124,7 @@
         <li><a href="https://intothevoidpress.substack.com/s/pixels-and-pieces">Pixels &amp; Pieces</a>: games, recs, design</li>
         <li><a href="https://intothevoidpress.substack.com/s/screen-and-story">Screen &amp; Story</a>: film, TV and books</li>
         <li><a href="https://intothevoidpress.substack.com/s/whats-keeping-the-stars-apart">What's Keeping The Stars Apart</a>: poetry, philosophy, physics</li>
+        <li><a href="/art-and-comics/#murmurations"><i>Murmurations</i></a>: a short comic, readable on this site</li>
       </ul>
     </div>
     <div class="hat">
@@ -123,7 +132,7 @@
         <img src="/images/roman-serius-monogram.png" alt="">
         <div><p class="kicker">Game design</p><h2>Roman Serius</h2></div>
       </div>
-      <p>As Roman Serius I make solo journaling RPGs, tabletop playsets, zines and tools, most of them free.</p>
+      <p>As Roman Serius I make solo journaling RPGs, tabletop playsets and tools, most of them free.</p>
       <ul>
         <li><a href="/games/">All games</a>: everything on itch.io</li>
         <li><a href="/daily-games/">Daily Games</a>: Caesarle and Haikudle, new every day</li>
@@ -137,6 +146,7 @@
     <div class="btns">
       <a class="btn primary" href="https://intothevoidpress.substack.com/subscribe">Subscribe</a>
       <a class="btn" href="/daily-games/contact/">Contact form</a>
+      <a class="btn" href="/guestbook/">Guestbook</a>
       <a class="btn" href="https://bsky.app/profile/romanserius.com">Bluesky</a>
       <a class="btn" href="https://roman-serius.itch.io">itch.io</a>
       <a class="btn" href="https://github.com/Roman-Serius">GitHub</a>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guestbook · Soren Marius / Roman Serius</title>
+<link rel="canonical" href="https://romanserius.com/guestbook/">
+<meta name="description" content="Sign the guestbook: leave a note for Soren Marius / Roman Serius.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guestbook · Soren Marius / Roman Serius">
+<meta property="og:description" content="Letters from visitors. Stop by and leave one.">
+<meta property="og:url" content="https://romanserius.com/guestbook/">
+<meta property="og:image" content="https://romanserius.com/images/soren-logo-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="/images/roman-serius-monogram.png">
+<link rel="stylesheet" href="/assets/dateline.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Same newsprint palette as the front page */
+  :root{
+    --paper:#DDD1B9; --paper-2:#E6DCC8; --ink:#1A1A1A; --muted:#5E584D;
+    --rule:#B9AB8D; --red:#8B1E1E; --blue:#134F70; --gold:#D4A800;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:19px;line-height:1.6}
+  a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
+  a:hover{color:var(--red)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 56px}
+
+  .mast{text-align:center;padding:22px 0 16px;border-bottom:3px double var(--ink)}
+  .mast h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(40px,8vw,76px);
+    line-height:.95;margin:0;letter-spacing:-.02em}
+  .mast .aka{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(18px,3vw,22px);margin:10px 0 0;color:var(--muted)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 4px}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* the form: a clipped-out coupon */
+  .sign{margin:26px auto 8px;max-width:640px;background:var(--paper-2);border:2px dashed var(--ink);padding:20px 22px 18px}
+  .sign h2{font-family:"Fraunces",serif;font-weight:800;font-size:28px;margin:0 0 4px}
+  .sign .sub{margin:0 0 14px;color:var(--muted);font-size:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{display:block;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
+  label .opt{color:var(--muted);text-transform:none;letter-spacing:0}
+  input,textarea{display:block;width:100%;margin-top:4px;font:inherit;font-family:"Newsreader",Georgia,serif;font-size:18px;
+    color:var(--ink);background:var(--paper);border:1px solid var(--ink);border-radius:0;padding:8px 10px;text-transform:none;letter-spacing:0}
+  textarea{min-height:120px;resize:vertical;line-height:1.5}
+  input:focus,textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
+  .count.over{color:var(--red)}
+  .btn{font-family:"IBM Plex Mono",monospace;font-size:14px;text-decoration:none;cursor:pointer;
+    border:1px solid var(--red);padding:10px 16px;background:var(--red);color:#fff}
+  .btn:hover,.btn:focus-visible{background:var(--ink);border-color:var(--ink)}
+  .btn[disabled]{opacity:.55;cursor:wait}
+  .btn.plain{background:var(--paper-2);color:var(--ink);border-color:var(--ink)}
+  .btn.plain:hover{background:var(--ink);color:var(--paper)}
+  #captcha:not(:empty){margin:4px 0 12px}
+  .status{min-height:1.6em;margin:10px 0 0;font-size:16px}
+  .status.error{color:var(--red)}
+
+  /* the letters */
+  .letters-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    border-top:3px double var(--ink);border-bottom:1px solid var(--ink);margin-top:26px;padding:12px 0 6px}
+  .letters-head h2{font-family:"Fraunces",serif;font-weight:800;font-size:30px;margin:0}
+  .letters{columns:2;column-gap:44px;column-rule:1px solid var(--ink);padding-top:18px}
+  .letter{break-inside:avoid;margin:0 0 22px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+  .letter p{margin:0 0 8px;white-space:pre-line;overflow-wrap:anywhere}
+  .letter .sig{text-align:right;font-family:"Fraunces",serif;font-style:italic;margin:0}
+  .letter .sig a{font-weight:600}
+  .letter .meta{display:flex;justify-content:space-between;gap:10px;margin-top:6px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+  .letter .meta button{font:inherit;color:var(--red);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+  .letter.new{animation:inked 1.6s ease-out}
+  @keyframes inked{from{background:var(--paper-2)}to{background:transparent}}
+  .empty{color:var(--muted);font-style:italic;column-span:all}
+  .more{text-align:center;margin-top:6px}
+
+  footer{text-align:center;color:var(--muted);font-size:14px;margin-top:30px;border-top:3px double var(--ink);padding-top:16px}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+  @media (max-width:700px){
+    body{font-size:18px}
+    .row{grid-template-columns:1fr;gap:0}
+    .letters{columns:1}
+    .sign{padding:16px 14px}
+  }
+  @media (prefers-reduced-motion:reduce){.letter.new{animation:none}}
+</style>
+<script data-goatcounter="https://roman-serius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<header class="dateline-bar">
+  <div class="dateline">
+    <a class="dl-home" href="/">← Front page</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/games/">Games</a>
+      <a href="/art-and-comics/">Art &amp; Comics</a>
+      <a href="/daily-games/">Daily</a>
+      <a href="https://intothevoidpress.substack.com">Writing</a>
+      <a href="/about/">About</a>
+      <a href="/now/">Now</a>
+      <a href="/guestbook/" aria-current="page">Guestbook</a>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+
+
+  <header class="mast">
+    <p class="kicker">Guestbook</p>
+    <h1>Letters from Visitors</h1>
+    <p class="aka">You came all this way. Leave a note.</p>
+  </header>
+
+  <form class="sign" id="form" novalidate>
+    <h2>Sign the guestbook</h2>
+    <p class="sub">Say hi, tell me what brought you here, or leave an idea for a game. Your note shows up below right away.</p>
+    <div class="row">
+      <label>Name
+        <input id="name" name="name" maxlength="40" autocomplete="nickname" required>
+      </label>
+      <label>From <span class="opt">(optional)</span>
+        <input id="place" name="place" maxlength="40" placeholder="a place, a handle, a mood">
+      </label>
+    </div>
+    <label>Website <span class="opt">(optional)</span>
+      <input id="website" name="website" maxlength="200" inputmode="url" autocomplete="url" placeholder="yoursite.com">
+    </label>
+    <label>Message
+      <textarea id="message" name="message" maxlength="600" required></textarea>
+    </label>
+    <!-- Bots fill in every field; people never see this one. -->
+    <label class="hp" aria-hidden="true">Leave this empty <input id="hp" tabindex="-1" autocomplete="off"></label>
+    <div id="captcha"></div>
+    <div class="actions">
+      <span class="count" id="count">600 left</span>
+      <button class="btn" id="submit" type="submit">Sign the guestbook</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <div class="letters-head">
+    <h2>The letters</h2>
+    <span class="mono" id="total" style="font-size:13px;color:var(--muted)"></span>
+  </div>
+  <section class="letters" id="letters" aria-live="polite">
+    <p class="empty">Loading the letters…</p>
+  </section>
+  <div class="more"><button class="btn plain" id="more" type="button" hidden>Older letters</button></div>
+
+  <footer>© 2026 Soren Marius · Roman Serius</footer>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="guestbook.js"></script>
+</body>
+</html>

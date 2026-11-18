@@ -7,6 +7,15 @@
 <meta name="google-site-verification" content="Y3dcAOR8CE4re0EMq4n09PdS3Xgm8ZSrbBdw6blQbmY" />
 <link rel="canonical" href="https://romanserius.com/">
 <meta name="description" content="Soren Marius writes about games, film, and why things work. As Roman Serius, he makes small games.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Soren Marius · Roman Serius">
+<meta property="og:description" content="Soren Marius writes about games, film, and why things work. As Roman Serius, he makes small games.">
+<meta property="og:url" content="https://romanserius.com/">
+<meta property="og:image" content="https://romanserius.com/images/soren-logo-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="/images/roman-serius-monogram.png">
+<link rel="stylesheet" href="/assets/dateline.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,13 +29,9 @@
   body{margin:0;background:var(--paper);color:var(--ink);
     font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.5}
   a{color:inherit}
-  .wrap{max-width:1040px;margin:0 auto;padding:28px 20px 56px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px 56px}
 
   /* masthead */
-  .dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--muted);
-    border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 0}
   .mast{text-align:center;padding:26px 0 18px;border-bottom:3px double var(--ink)}
   .mast h1{font-family:"Fraunces",Georgia,serif;font-weight:800;font-size:clamp(46px,10vw,104px);
     line-height:.95;margin:0;letter-spacing:-.02em}
@@ -87,7 +92,7 @@
     body{font-size:17px}
     .personae,.cols{grid-template-columns:1fr}
     .persona + .persona,.col + .col{border-left:0;border-top:1px solid var(--ink)}
-    .wrap{padding:20px 16px 44px}
+    .wrap{padding:0 16px 44px}
     .col,.persona{padding-left:0;padding-right:0}
     ul.list a{flex-direction:column;gap:2px}
     ul.list .d{text-align:left}
@@ -98,12 +103,29 @@
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+<header class="dateline-bar">
+  <div class="dateline">
+    <span class="dl-home" id="dl-date">Est. 2026</span>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/games/">Games</a>
+      <a href="/art-and-comics/">Art &amp; Comics</a>
+      <a href="/daily-games/">Daily</a>
+      <a href="https://intothevoidpress.substack.com">Writing</a>
+      <a href="/about/">About</a>
+      <a href="/now/">Now</a>
+      <a href="/guestbook/">Guestbook</a>
+    </nav>
+  </div>
+</header>
+<script>
+  // Newspaper dateline: today's date on the front page.
+  (function () {
+    var d = document.getElementById("dl-date");
+    if (d) d.textContent = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  })();
+</script>
 <div class="wrap">
 
-  <div class="dateline">
-    <span>Games · Film · Books · Poems</span>
-    <span><a href="/about/" style="text-decoration:none">About</a> · Est. 2026</span>
-  </div>
 
   <header class="mast">
     <h1>Soren Marius</h1>
@@ -113,11 +135,11 @@
 
   <section class="personae" aria-label="Two names">
     <div class="persona">
-      <img src="images/soren-marius-portrait.jpg" alt="Hand-drawn marker portrait of Soren Marius">
+      <img src="/images/soren-logo.webp" alt="Soren Marius logo: a drawn portrait in browns over a repeating line of text, "we're here because we're here"">
       <div>
         <p class="kicker">Writing</p>
         <h2>Soren Marius</h2>
-        <p>Essays, analysis, and poems at <i>Into the Void</i>.</p>
+        <p>Essays, analysis, and poems at <i>Into the Void</i>, plus comics.</p>
       </div>
     </div>
     <div class="persona">
@@ -125,7 +147,7 @@
       <div>
         <p class="kicker">Game Design</p>
         <h2>Roman Serius</h2>
-        <p>Solo RPGs, zines, and small digital games on itch.io.</p>
+        <p>Solo RPGs, tools, and small digital games.</p>
       </div>
     </div>
   </section>
@@ -157,6 +179,11 @@
         <li><a href="https://intothevoidpress.substack.com/p/lanterns"><span class="t">Lanterns</span><span class="d">Programming vs. free will</span></a></li>
         <li><a href="https://intothevoidpress.substack.com/p/temple"><span class="t">Temple</span><span class="d">A poem</span></a></li>
       </ul>
+
+      <p class="label">Art &amp; comics · <a href="/art-and-comics/" style="text-transform:none;letter-spacing:0">See all →</a></p>
+      <ul class="list">
+        <li><a href="/art-and-comics/#murmurations"><span class="t">Murmurations</span><span class="d">A short comic, readable here</span></a></li>
+      </ul>
     </section>
 
     <section class="col" aria-labelledby="games">
@@ -185,11 +212,6 @@
         <li><a href="https://roman-serius.itch.io/gm-terminal-kit-thornfield-demo"><span class="t">GM Terminal Kit</span><span class="d">Retro terminals for GMs</span></a></li>
       </ul>
 
-      <p class="label">Zines</p>
-      <ul class="list">
-        <li><a href="https://roman-serius.itch.io/analog-zine-issue-000"><span class="t">Analog Zine, Issue 000</span><span class="d">Print-and-play distractions</span></a></li>
-        <li><a href="https://roman-serius.itch.io/murmurations"><span class="t">Murmurations</span><span class="d">A short comic</span></a></li>
-      </ul>
     </section>
   </main>
 
